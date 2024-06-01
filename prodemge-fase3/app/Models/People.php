@@ -39,4 +39,13 @@ class People extends Model
     {
         return $this->hasMany(Adress::class, 'people_id', 'id');
     }
+    /**
+     * Get all of the contacts for the People
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class, 'people_id', 'id');
+    }
 }
