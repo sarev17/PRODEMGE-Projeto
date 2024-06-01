@@ -19,7 +19,10 @@ return new class extends Migration
             $table->text('phone_number');
             $table->enum('type',['business','whatsapp','residential']);
             $table->timestamps();
-            $table->foreign('people_id')->references('id')->on('peoples');
+            $table->foreign('people_id')
+                ->references('id')
+                ->on('peoples')
+                ->onDelete('cascade');
         });
     }
 

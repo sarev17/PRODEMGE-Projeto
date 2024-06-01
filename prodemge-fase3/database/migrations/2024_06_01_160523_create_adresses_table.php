@@ -24,7 +24,10 @@ return new class extends Migration
             $table->text('uf');
             $table->text('city');
             $table->timestamps();
-            $table->foreign('people_id')->references('id')->on('peoples');
+            $table->foreign('people_id')
+                ->references('id')
+                ->on('peoples')
+                ->onDelete('cascade');
         });
     }
 

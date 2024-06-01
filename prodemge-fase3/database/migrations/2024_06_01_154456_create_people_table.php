@@ -20,7 +20,10 @@ return new class extends Migration
             $table->text('father_name');
             $table->text('mother_name');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
