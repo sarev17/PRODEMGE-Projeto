@@ -16,9 +16,13 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Home',[
-        'termoBusca'=>123
-    ]);
+    return Inertia::render('Home');
+});
+
+Route::prefix('usuario')->group(function(){
+    Route::get('cadastro',function(){
+        return Inertia::render('Register');
+    });
 });
 
 Auth::routes();

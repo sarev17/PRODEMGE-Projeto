@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PeopleController;
+use App\Models\People;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('search')->group(function(){
+    Route::get('{term}',[PeopleController::class,'search'])->name('search.people.name');
 });
