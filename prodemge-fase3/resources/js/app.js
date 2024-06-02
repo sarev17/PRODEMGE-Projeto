@@ -8,6 +8,9 @@ import 'vuetify/styles' // Importe os estilos do Vuetify
 import * as components from 'vuetify/components' // Importe os componentes do Vuetify
 import * as directives from 'vuetify/directives' // Importe as diretivas do Vuetify
 
+//templates
+import HeaderVue from './layouts/Header.vue'
+
 InertiaProgress.init()
 
 createInertiaApp({
@@ -20,6 +23,7 @@ createInertiaApp({
     const vuetify = createVuetify({
       components,
       directives,
+      HeaderVue,
     })
 
     // Crie o aplicativo Vue

@@ -23,3 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('search')->group(function(){
     Route::get('{term}',[PeopleController::class,'search'])->name('search.people.name');
 });
+
+Route::prefix('user')->group(function(){
+    Route::post('store',[PeopleController::class,'store']);
+});

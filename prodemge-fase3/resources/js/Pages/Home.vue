@@ -1,19 +1,7 @@
 
 <template>
   <div>
-    <v-toolbar>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-      <v-toolbar-title>
-        <img src="/images/logo_prodemge.png" alt=""
-      /></v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-export</v-icon>
-      </v-btn>
-    </v-toolbar>
+    <Header/>
   </div>
   <div style="margin: 3rem">
     <v-sheet class="mx-auto" width="300">
@@ -50,6 +38,7 @@
 <script>
 import axios from "axios";
 import backgroundImage from "@/assets/images/logo_prodemge.png";
+import Header from './../layouts/Header.vue';
 
 export default {
   data() {
@@ -91,5 +80,8 @@ export default {
         });
     },
   },
+  components:{
+    Header
+  }
 };
 </script>
