@@ -157,7 +157,7 @@
         </v-col>
       </v-row>
 
-<br /><br />
+      <br /><br />
       <span class="text-h6 mt-12">Dados de endereço comercial</span>
       <br /><br />
       <v-row>
@@ -269,7 +269,7 @@
 
       <v-row>
         <v-col cols="12">
-          <v-btn type="submit" color="primary">CADASTRAR</v-btn>
+          <v-btn type="submit" color="primary">Atualizar Dados</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -330,7 +330,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .post("/api/user/store", {
+        .post("/api/user/edit/" + this.user.id, {
           name: this.firstname,
           social_name: this.lastname,
           document: this.cpf,
@@ -339,6 +339,21 @@ export default {
           contact: this.phone,
           email: this.email,
           password: this.cpf,
+          // Adicione os campos de endereço
+          addressResidence: this.addressResidence,
+          numberResidence: this.numberResidence,
+          complementResidence: this.complementResidence,
+          neighborhoodResidence: this.neighborhoodResidence,
+          ufResidence: this.ufResidence,
+          cityResidence: this.cityResidence,
+          addressComercial: this.addressComercial,
+          numberComercial: this.numberComercial,
+          complementComercial: this.complementComercial,
+          neighborhoodComercial: this.neighborhoodComercial,
+          ufComercial: this.ufComercial,
+          cityComercial: this.cityComercial,
+          postalCodeResidence: this.postalCodeResidence,
+          postalCodeComercial: this.postalCodeComercial,
         })
         .then((response) => {
           console.log("Resposta recebida:", response);
@@ -354,6 +369,7 @@ export default {
           }
         });
     },
+
     fetchAddressDataResidence() {
       let cep = this.postalCodeResidence;
       if (cep.length === 8) {
@@ -366,6 +382,7 @@ export default {
               this.neighborhoodResidence = data.bairro;
               this.ufResidence = data.uf;
               this.cityResidence = data.localidade;
+              this.postalCodeResidence = this.postalCodeResidence
 
               // Bloquear os campos preenchidos automaticamente
               this.isAddressDisabled = true;

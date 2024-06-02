@@ -26,4 +26,5 @@ Route::prefix('search')->group(function(){
 
 Route::prefix('user')->group(function(){
     Route::post('store',[PeopleController::class,'store']);
+    Route::post('edit/{user}',[PeopleController::class,'edit']);
 });
