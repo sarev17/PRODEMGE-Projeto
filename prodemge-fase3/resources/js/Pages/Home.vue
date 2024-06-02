@@ -35,7 +35,7 @@
       <template v-slot:item.actions="{ item }">
         <div class="d-flex">
           <v-col cols="auto" style="display:flex;column-gap:0.5rem">
-            <v-btn icon="mdi-open-in-new" size="small" style="color:white;background-color:#00008d"></v-btn>
+            <v-btn @click="editItem()" icon="mdi-open-in-new" size="small" style="color:white;background-color:#00008d"></v-btn>
             <v-btn icon="mdi-eye" size="small" style="color:white;background-color:#00796B"></v-btn>
           </v-col>
         </div>
@@ -102,7 +102,7 @@ export default {
       console.log("Visualizar item:", item);
     },
     editItem(item) {
-      console.log("Editar item:", item);
+      window.location.href = '/usuario/editar/'+item
     },
   },
   components: {
