@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Home');
+});
+
+Route::prefix('usuario')->group(function(){
+    Route::get('cadastro',function(){
+        return Inertia::render('Register');
+    });
+    Route::get('editar/{user}',function($user){
+        $user = User::find($user);
+        if($user){
+            $user->document = $user->people->document;
+            $user->contact = $user->people->contacts->first()->phone_number;
+            $user->father_name = $user->people->father_name;
+            $user->mother_name = $user->people->mother_name;
+            $user->address = $user->people->address;
+        }
+        return Inertia::render('Edit',[
+            'user'=>$user
+        ]);
+    });
 });
 
 Auth::routes();
