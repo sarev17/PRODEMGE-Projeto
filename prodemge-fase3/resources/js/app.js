@@ -8,6 +8,14 @@ import 'vuetify/styles' // Importe os estilos do Vuetify
 import * as components from 'vuetify/components' // Importe os componentes do Vuetify
 import * as directives from 'vuetify/directives' // Importe as diretivas do Vuetify
 
+//icons css
+import { fa } from "vuetify/iconsets/fa";
+import { aliases, mdi } from "vuetify/lib/iconsets/mdi";
+// make sure to also import the coresponding css
+import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
+import "@fortawesome/fontawesome-free/css/all.css"; // Ensure your project is capable of handling css files
+
+
 //templates
 import HeaderVue from './layouts/Header.vue'
 
@@ -24,6 +32,7 @@ createInertiaApp({
       components,
       directives,
       HeaderVue,
+      fa
     })
 
     // Crie o aplicativo Vue

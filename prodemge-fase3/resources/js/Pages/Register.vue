@@ -1,6 +1,7 @@
 <template>
-<Header/>
-  <v-form v-model="valid" @submit.prevent="submitForm">
+  <Header />
+  <v-form v-model="valid" @submit.prevent="submitForm" style="margin: 4rem">
+    <center><span class="text-h6">Cadastro de usuário</span></center>
     <v-container>
       <v-row>
         <v-col cols="12" md="4">
@@ -90,7 +91,7 @@
             icon="mdi-alert-circle-outline"
             transition="scale-transition"
           >
-            <strong>Ocorreram erros ao processar o formulário:</strong>
+            <strong>Não foi possível completar a operação:</strong>
             <ul>
               <li v-for="(error, fieldName) in errorMessage" :key="fieldName">
                 {{ error }}
@@ -126,7 +127,7 @@
 
 <script>
 import axios from "axios";
-import Header from './../layouts/Header.vue';
+import Header from "./../layouts/Header.vue";
 
 export default {
   data() {
@@ -181,7 +182,7 @@ export default {
           console.log("Resposta recebida:", response);
           this.successMessage = "Cadastro realizado com sucesso!";
           this.showSuccessAlert = true;
-          this.clearForm();
+          window.location.href = `/?usuario=${this.document}`;
         })
         .catch((error) => {
           console.error("Erro ao enviar dados:", error);
@@ -202,8 +203,8 @@ export default {
       this.valid = false;
     },
   },
-  components:{
-    Header
-  }
+  components: {
+    Header,
+  },
 };
 </script>
